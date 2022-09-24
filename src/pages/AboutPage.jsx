@@ -15,10 +15,11 @@ function AboutPage() {
             <div className="underline"></div>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-            est voluptates commodi cumque, perspiciatis optio magnam debitis
-            dolorem minus sapiente numquam recusandae aliquid porro deleniti
-            molestias accusantium quos earum aspernatur?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam,
+            expedita mollitia ad, repellendus quia in minus architecto aut,
+            nihil consequatur voluptas aliquid! Qui quisquam necessitatibus
+            assumenda, dolorem porro itaque, nulla suscipit, debitis inventore
+            accusantium placeat? Cum, error beatae. Veritatis, assumenda.
           </p>
         </article>
       </Wrapper>
@@ -40,6 +41,8 @@ const Wrapper = styled.section`
     line-height: 2;
     margin-top: 2rem;
     color: var(--clr-grey-5);
+    max-width: 45em;
+    text-align: justify;
   }
   .title {
     text-align: left;

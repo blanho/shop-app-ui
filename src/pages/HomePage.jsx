@@ -1,7 +1,15 @@
 import React from "react";
+import { FeaturedProduct, Hero, Contact, Services } from "../components";
 
 function HomePage() {
-  return <h1>HomePage</h1>;
+  return (
+    <main>
+      <Hero />
+      <FeaturedProduct />
+      <Services />
+      <Contact />
+    </main>
+  );
 }
 
 export default HomePage;
