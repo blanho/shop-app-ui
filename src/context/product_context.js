@@ -5,7 +5,7 @@ import { SIDEBAR_CLOSE, SIDEBAR_OPEN } from "../actions";
 const ProductContext = React.createContext();
 
 const initialState = {
-  isSidebarOpen: true,
+  isSidebarOpen: false,
 };
 
 export const ProductProvider = ({ children }) => {
