@@ -13,9 +13,10 @@ function CartButton() {
           <span className="cart-value">12</span>
         </span>
       </Link>
-      <button type="button" className="auth-btn">
+
+      <Link to="/login" className="auth-btn">
         Login
-      </button>
+      </Link>
     </Wrapper>
   );
 }
@@ -24,12 +25,17 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
+  justify-content: center;
   .cart-btn {
     color: var(--clr-grey-1);
     font-size: 1.2rem;
     letter-spacing: var(--spacing);
     display: flex;
     align-items: center;
+    margin-right: 2rem;
+    &:hover {
+      color: var(--clr-primary-5);
+    }
   }
   .cart-container {
     display: flex;
@@ -64,6 +70,9 @@ const Wrapper = styled.div`
     cursor: pointer;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
+    &:hover {
+      color: var(--clr-primary-5);
+    }
   }
 `;
 
