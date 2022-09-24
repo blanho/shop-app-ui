@@ -1,7 +1,7 @@
 import React from "react";
 
-function Starts() {
+function Stars() {
   return <div>Starts</div>;
 }
 
-export default Starts;
+export default Stars;

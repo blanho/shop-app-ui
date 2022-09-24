@@ -1,8 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 
-const initialState = {};
-
 const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {

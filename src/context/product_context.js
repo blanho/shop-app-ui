@@ -1,8 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 
-const initialState = {};
-
 const ProductContext = React.createContext();
 
 export const ProductProvider = ({ children }) => {

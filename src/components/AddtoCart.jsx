@@ -1,7 +1,7 @@
 import React from "react";
 
-function AddtoCart() {
+function AddToCart() {
   return <div>AddtoCart</div>;
 }
 
-export default AddtoCart;
+export default AddToCart;
