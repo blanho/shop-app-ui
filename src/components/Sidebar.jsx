@@ -8,7 +8,7 @@ import CartButton from "./CartButton";
 import { useProductContext } from "../context/product_context";
 
 function Sidebar() {
-  const { isSidebarOpen } = useProductContext();
+  const { isSidebarOpen, closeSidebar } = useProductContext();
   return (
     <SidebarContainer>
       <aside
@@ -16,7 +16,7 @@ function Sidebar() {
       >
         <div className="sidebar-header">
           <img src={logo} className="logo" alt="comfy sloth" />
-          <button className="close-btn" type="button">
+          <button className="close-btn" type="button" onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
@@ -25,12 +25,16 @@ function Sidebar() {
             const { id, url, text } = link;
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <Link to={url} onClick={closeSidebar}>
+                  {text}
+                </Link>
               </li>
             );
           })}
           <li>
-            <Link to="/checkout">checkout</Link>
+            <Link to="/checkout" onClick={closeSidebar}>
+              checkout
+            </Link>
           </li>
         </ul>
         <CartButton />
@@ -72,7 +76,7 @@ const SidebarContainer = styled.div`
     background: var(--clr-white);
     transition: var(--transition);
     transform: translate(-100%);
-    z-index: -1;
+    z-index: -999;
   }
   .show-sidebar {
     transform: translate(0);
@@ -93,7 +97,7 @@ const SidebarContainer = styled.div`
   }
   .links a:hover {
     padding-left: 2rem;
-    border-left: 4px solid var(--clr-grey-3);
+    border-left: 4px solid var(--clr-primary-5);
     color: var(--clr-primary-5);
   }
 `;

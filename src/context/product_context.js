@@ -1,11 +1,11 @@
-import React, { useContext, useReducer, useEffect } from "react";
+import React, { useContext, useReducer } from "react";
 import reducer from "../reducers/product_reducer";
 
 import { SIDEBAR_CLOSE, SIDEBAR_OPEN } from "../actions";
 const ProductContext = React.createContext();
 
 const initialState = {
-  isSidebarOpen: false,
+  isSidebarOpen: true,
 };
 
 export const ProductProvider = ({ children }) => {

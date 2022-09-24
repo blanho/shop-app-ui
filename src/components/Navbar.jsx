@@ -5,8 +5,10 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
 import CartButton from "./CartButton";
+import { useProductContext } from "../context/product_context";
 
 function Navbar() {
+  const { openSidebar } = useProductContext();
   return (
     <NavContainer>
       <div className="nav-center">
@@ -14,7 +16,7 @@ function Navbar() {
           <Link to="/">
             <img src={logo} alt="comfy store" />
           </Link>
-          <button type="button" className="nav-toggle">
+          <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>
         </div>
