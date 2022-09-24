@@ -5,12 +5,15 @@ import { FaTimes } from "react-icons/fa";
 import { links } from "../utils/constants";
 import { Link } from "react-router-dom";
 import CartButton from "./CartButton";
+import { useProductContext } from "../context/product_context";
 
 function Sidebar() {
-  const isOpen = true;
+  const { isSidebarOpen } = useProductContext();
   return (
     <SidebarContainer>
-      <aside className={`${isOpen ? "sidebar show-sidebar" : "sidebar"}`}>
+      <aside
+        className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}
+      >
         <div className="sidebar-header">
           <img src={logo} className="logo" alt="comfy sloth" />
           <button className="close-btn" type="button">
