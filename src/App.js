@@ -22,7 +22,7 @@ function App() {
         <Route path="cart" element={<CartPage />} />
         <Route path="products" index element={<ProductsPage />} />
         <Route path="products/:productId" element={<SingleProductPage />} />
-        <Route path="checkouts" element={<CheckoutPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />

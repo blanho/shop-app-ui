@@ -200,9 +200,12 @@ p {
   margin: 0 auto;
 }
 .page-100 {
+  /* 10rem: Sidebar + Footer */
   min-height: calc(100vh - 10rem);
   padding: 5rem 0;
 }
 .page {
-  min-height: calc(100vh - (20vh + 10rem));
+  /* 10rem: Sidebar + Footer */
+  /* 20vh: Page Hero */
+  min-height: calc(100vh - (10rem + 20vh));
 }
