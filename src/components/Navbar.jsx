@@ -5,7 +5,6 @@ import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
 import CartButton from "./CartButton";
-import { useProductContext } from "../context/product_context";
 
 function Navbar() {
   return (
@@ -29,6 +28,7 @@ function Navbar() {
             );
           })}
         </ul>
+        <CartButton />
       </div>
     </NavContainer>
   );
@@ -62,6 +62,9 @@ const NavContainer = styled.nav`
   .nav-links {
     display: none;
   }
+  .cart-btn-wrapper {
+    display: none;
+  }
   @media (min-width: 992px) {
     .nav-toggle {
       display: none;
@@ -87,6 +90,9 @@ const NavContainer = styled.nav`
           border-bottom: 2px solid var(--clr-primary-7);
         }
       }
+    }
+    .cart-btn-wrapper {
+      display: grid;
     }
   }
 `;
