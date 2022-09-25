@@ -43,6 +43,7 @@ const Wrapper = styled.section`
 
   .header h3 {
     margin-bottom: 2rem;
+    text-align: center;
   }
   p {
     margin-bottom: 0;
@@ -79,8 +80,10 @@ const Wrapper = styled.section`
   }
   @media (min-width: 992px) {
     .header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
   @media (min-width: 576px) {
