@@ -33,8 +33,8 @@ const Wrapper = styled.article`
     height: 100%;
     width: 100%;
     background: linear-gradient(
-      rgba(234, 237, 223, 0.1),
-      rgba(220, 222, 196, 0.3)
+      rgba(218, 225, 190, 0.1),
+      rgba(202, 207, 140, 0.3)
     );
     top: 0%;
     left: 0%;
