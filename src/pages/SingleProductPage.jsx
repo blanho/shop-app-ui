@@ -62,11 +62,11 @@ function SingleProductPage() {
           <ProductImages images={images} />
           <section className="content">
             <h2>{name}</h2>
-            <Stars />
+            <Stars stars={stars} reviews={reviews} />
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>
             <p className="info">
-              <span>Available</span>: {stock > 0 ? "In Stock" : "Out of stock"}
+              <span>Available:</span> {stock > 0 ? "In Stock" : "Out of stock"}
             </p>
             <p className="info">
               <span>SKU: </span>
