@@ -7,6 +7,9 @@ import {
   GET_PRODUCTS_START,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_SUCCESS,
+  GET_SINGLE_PRODUCT_START,
+  GET_SINGLE_PRODUCT_ERROR,
+  GET_SINGLE_PRODUCT_SUCCESS,
 } from "../actions";
 import { products_url as url } from "../utils/constants";
 
@@ -14,10 +17,15 @@ const ProductContext = React.createContext();
 
 const initialState = {
   isSidebarOpen: false,
+
   products_loading: false,
   products_error: false,
   products: [],
   featured_products: [],
+
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: [],
 };
 
 export const ProductProvider = ({ children }) => {
@@ -42,6 +50,19 @@ export const ProductProvider = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR });
+    }
+  };
+
+  // Fetch Single Product
+  const fetchSingleProduct = async (url) => {
+    dispatch({ type: GET_SINGLE_PRODUCT_START });
+    try {
+      const res = await axios.get(url);
+      const singleProduct = res.data;
+
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: singleProduct });
+    } catch (error) {
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
   };
 
