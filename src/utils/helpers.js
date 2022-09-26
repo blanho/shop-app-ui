@@ -7,6 +7,8 @@ export const formatPrice = (price) => {
 
 export const getUniqueValues = (products, type) => {
   let unique = products.map((product) => product[type]);
+
+  // To flat the nested children array into parent array becomes a smoothy array
   if (type === "colors") {
     unique = unique.flat();
   }
