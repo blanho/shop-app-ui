@@ -1,4 +1,5 @@
 import {
+  CLEAR_FILTERS,
   FILTER_PRODUCTS,
   GRID_VIEW,
   LIST_VIEW,
@@ -68,6 +69,20 @@ const filter_reducer = (state, action) => {
   if (action.type === FILTER_PRODUCTS) {
     console.log("filtering products");
     return { ...state };
+  }
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        text: "",
+        company: "all",
+        category: "all",
+        color: "all",
+        price: state.filter.max_price,
+        shipping: false,
+      },
+    };
   }
 };
 

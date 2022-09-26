@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from "react";
 import { useContext } from "react";
 import {
+  CLEAR_FILTERS,
   FILTER_PRODUCTS,
   GRID_VIEW,
   LIST_VIEW,
@@ -69,10 +70,16 @@ export const FilterProvider = ({ children }) => {
     if (name === "price") {
       value = Number(value);
     }
+    if (name === "shipping") {
+      value = e.target.checked;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
-  const clearFilters = () => {};
+  // Clear Filter
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
 
   return (
     <FilterContext.Provider
