@@ -1,7 +1,91 @@
 import React from "react";
+import { useFilterContext } from "../context/filter_context";
+import { BsFillGridFill, BsList } from "react-icons/bs";
+import styled from "styled-components";
 
 function Sort() {
-  return <div>Sort</div>;
+  const { filtered_products: products, grid_view } = useFilterContext();
+  return (
+    <Wrapper>
+      <div className="btn-container">
+        <button type="button" className={`${grid_view ? "active" : null}`}>
+          <BsFillGridFill />
+        </button>
+        <button type="button" className={`${!grid_view ? "active" : null}`}>
+          <BsList />
+        </button>
+      </div>
+      <p>{products.length} products found</p>
+      <hr />
+      <form>
+        <label htmlFor="sort">sort by</label>
+        <select name="sort" id="sort" className="sort-input">
+          <option value="price-lowest">price (lowest)</option>
+          <option value="price-highest">price (highest)</option>
+          <option value="name-a">name (a-z)</option>
+          <option value="name-z">name (z-a)</option>
+        </select>
+      </form>
+    </Wrapper>
+  );
 }
+
+const Wrapper = styled.section`
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  margin-bottom: 2rem;
+  column-gap: 2rem;
+  p {
+    text-transform: capitalize;
+    margin-bottom: 0;
+  }
+  .btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.5rem;
+    button {
+      background: transparent;
+      border: 1px solid var(--clr-black);
+      color: var(--clr-black);
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      opacity: 0.5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        font-size: 1rem;
+      }
+    }
+    .active {
+      background-color: var(--clr-black);
+      color: var(--clr-white);
+      opacity: 1;
+    }
+  }
+  label {
+    display: inline-block;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+  .sort-input {
+    border-color: transparent;
+    font-size: 1rem;
+    text-transform: capitalize;
+    padding: 0.25rem 0.5rem;
+  }
+
+  @media (max-width: 576px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+    .btn-container {
+      width: 50px;
+    }
+  }
+`;
 
 export default Sort;
