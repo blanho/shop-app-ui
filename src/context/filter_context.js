@@ -1,10 +1,12 @@
 import React, { useEffect, useReducer } from "react";
 import { useContext } from "react";
 import {
+  FILTER_PRODUCTS,
   GRID_VIEW,
   LIST_VIEW,
   LOAD_PRODUCTS,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
   UPDATE_SORT,
 } from "../actions";
 import reducer from "../reducers/filter_reducer";
@@ -56,12 +58,29 @@ export const FilterProvider = ({ children }) => {
 
   // Handle Sort Functionality
   useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.sort]);
+  }, [products, state.sort, state.filters]);
+
+  // Update Filter
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
+  const clearFilters = () => {};
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setListView, setGridView, updateSort }}
+      value={{
+        ...state,
+        setListView,
+        setGridView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>

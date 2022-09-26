@@ -1,8 +1,10 @@
 import {
+  FILTER_PRODUCTS,
   GRID_VIEW,
   LIST_VIEW,
   LOAD_PRODUCTS,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
   UPDATE_SORT,
 } from "../actions";
 
@@ -58,6 +60,13 @@ const filter_reducer = (state, action) => {
       });
     }
     return { ...state, filtered_products: tempProducts };
+  }
+  if (action.type === UPDATE_FILTERS) {
+    const { name, value } = action.payload;
+    return { ...state, filters: { ...state.filters, [name]: value } };
+  }
+  if (action.type === FILTER_PRODUCTS) {
+    return { ...state };
   }
 };
 
