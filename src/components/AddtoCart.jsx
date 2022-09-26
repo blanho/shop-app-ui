@@ -2,11 +2,33 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AmountButton from "./AmountButton";
 
 function AddToCart({ product }) {
   const { id, stock, colors } = product;
 
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const increase = () => {
+    setAmount((prevAmount) => {
+      let tempAmount = prevAmount + 1;
+      if (tempAmount > stock) {
+        tempAmount = stock;
+      }
+      return tempAmount;
+    });
+  };
+
+  const decrease = () => {
+    setAmount((prevAmount) => {
+      let tempAmount = prevAmount - 1;
+      if (tempAmount < 1) {
+        tempAmount = 1;
+      }
+      return tempAmount;
+    });
+  };
 
   return (
     <Wrapper>
@@ -28,6 +50,12 @@ function AddToCart({ product }) {
             );
           })}
         </div>
+      </div>
+      <div className="btn-container">
+        <AmountButton amount={amount} increase={increase} decrease={decrease} />
+        <Link to="/cart" className="btn">
+          Add to Cart
+        </Link>
       </div>
     </Wrapper>
   );
@@ -67,6 +95,14 @@ const Wrapper = styled.section`
   }
   .active {
     opacity: 1;
+  }
+  .btn-container {
+    margin-top: 2rem;
+  }
+
+  .btn {
+    margin-top: 1rem;
+    width: 140px;
   }
 `;
 
