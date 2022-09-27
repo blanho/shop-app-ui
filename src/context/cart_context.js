@@ -1,4 +1,5 @@
 import React, { useReducer, useContext } from "react";
+import { ADD_TO_CART } from "../actions";
 
 import reducer from "../reducers/cart_reducer";
 
@@ -13,8 +14,16 @@ const CartContext = React.createContext();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // add to cart
+  const addToCart = (id, color, amount, product) => {
+    dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
+  };
+
   return (
-    <CartContext.Provider value={{ ...state }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ ...state, addToCart }}>
+      {children}
+    </CartContext.Provider>
   );
 };
 
