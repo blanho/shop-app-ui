@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useCartContext } from "../context/cart_context";
 import { useProductContext } from "../context/product_context";
+import { useUserContext } from "../context/user_context";
 
 function CartButton() {
   const { closeSidebar } = useProductContext();
   const { total_items } = useCartContext();
+  const { loginWithRedirect, myUser, logout } = useUserContext();
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
@@ -17,10 +19,23 @@ function CartButton() {
           <span className="cart-value">{total_items}</span>
         </span>
       </Link>
-
-      <Link to="/login" className="auth-btn">
-        Login
-      </Link>
+      {myUser ? (
+        <button
+          type="button"
+          className="auth-btn"
+          onClick={() =>
+            logout({
+              returnTo: window.location.origin,
+            })
+          }
+        >
+          Logout
+        </button>
+      ) : (
+        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
+          Login
+        </button>
+      )}
     </Wrapper>
   );
 }
@@ -71,6 +86,7 @@ const Wrapper = styled.div`
     background: transparent;
     border: transparent;
     font-size: 1.2rem;
+    opacity: 0.8;
     cursor: pointer;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
