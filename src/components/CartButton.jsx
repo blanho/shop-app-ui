@@ -2,17 +2,19 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useCartContext } from "../context/cart_context";
 import { useProductContext } from "../context/product_context";
 
 function CartButton() {
   const { closeSidebar } = useProductContext();
+  const { total_items } = useCartContext();
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">12</span>
+          <span className="cart-value">{total_items}</span>
         </span>
       </Link>
 

@@ -45,6 +45,7 @@ const Wrapper = styled.section`
   p {
     text-transform: capitalize;
   }
+
   h4 {
     margin-top: 2rem;
   }
