@@ -6,9 +6,12 @@ import { links } from "../utils/constants";
 import { Link } from "react-router-dom";
 import CartButton from "./CartButton";
 import { useProductContext } from "../context/product_context";
+import { useUserContext } from "../context/user_context";
 
 function Sidebar() {
   const { isSidebarOpen, closeSidebar } = useProductContext();
+  const { myUser } = useUserContext();
+
   return (
     <SidebarContainer>
       <aside
@@ -31,11 +34,13 @@ function Sidebar() {
               </li>
             );
           })}
-          <li>
-            <Link to="/checkout" onClick={closeSidebar}>
-              checkout
-            </Link>
-          </li>
+          {myUser && (
+            <li>
+              <Link to="/checkout" onClick={closeSidebar}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButton />
       </aside>
