@@ -1,5 +1,5 @@
 import React, { useReducer, useContext, useEffect } from "react";
-import { ADD_TO_CART } from "../actions";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_CART_ITEM } from "../actions";
 
 import reducer from "../reducers/cart_reducer";
 
@@ -30,13 +30,17 @@ export const CartProvider = ({ children }) => {
   };
 
   // remove item
-  const removeItem = (id) => {};
+  const removeItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
+  };
 
   // toggle amount
   const toggleAmount = (id, value) => {};
 
   // clear cart
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
 
   //
   useEffect(() => {
