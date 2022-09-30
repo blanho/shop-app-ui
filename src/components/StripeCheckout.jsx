@@ -44,7 +44,7 @@ function StripeCheckout() {
     <Wrapper>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm clientSecret={clientSecret} />
         </Elements>
       )}
     </Wrapper>
