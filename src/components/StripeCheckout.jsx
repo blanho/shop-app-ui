@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import CheckoutForm from "./CheckoutForm";
-import { useUserContext } from "../context/user_context";
-import { formatPrice } from "../utils/helpers";
 import { loadStripe } from "@stripe/stripe-js";
 import { useCartContext } from "../context/cart_context";
 
